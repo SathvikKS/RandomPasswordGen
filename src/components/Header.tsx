@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Header component with title and description
  */

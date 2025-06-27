@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './Header';
 import PasswordDisplay from './PasswordDisplay';
 import PasswordLengthControl from './PasswordLengthControl';

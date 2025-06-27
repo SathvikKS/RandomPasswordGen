@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Security tips component with NIST 2024 guidelines
  */

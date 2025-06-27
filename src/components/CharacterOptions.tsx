@@ -1,4 +1,3 @@
-import React from 'react';
 import type { PasswordOptions } from '../types';
 
 interface CharacterOptionsProps {
