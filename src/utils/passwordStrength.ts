@@ -117,14 +117,14 @@ export function assessPasswordStrength(password: string, options: PasswordOption
 
     // Strength categories based on NIST guidance and practical security
     if (length < 8 || totalScore <= 3) {
-        return { text: 'Very Weak', color: 'text-red-600 bg-red-100 border-red-200', details };
+        return { text: 'Very Weak', color: 'text-red-800 bg-red-100 border-red-300', details };
     } else if (length < 12 || totalScore <= 5) {
-        return { text: 'Weak', color: 'text-orange-600 bg-orange-100 border-orange-200', details };
+        return { text: 'Weak', color: 'text-orange-800 bg-orange-100 border-orange-300', details };
     } else if (length < 15 || totalScore <= 7) {
-        return { text: 'Fair', color: 'text-yellow-600 bg-yellow-100 border-yellow-200', details };
+        return { text: 'Fair', color: 'text-yellow-800 bg-yellow-100 border-yellow-300', details };
     } else if (length < 20 || totalScore <= 9) {
-        return { text: 'Good', color: 'text-blue-600 bg-blue-100 border-blue-200', details };
+        return { text: 'Good', color: 'text-blue-800 bg-blue-100 border-blue-300', details };
     } else {
-        return { text: 'Excellent', color: 'text-green-600 bg-green-100 border-green-200', details };
+        return { text: 'Excellent', color: 'text-green-800 bg-green-100 border-green-300', details };
     }
 }

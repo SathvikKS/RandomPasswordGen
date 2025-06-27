@@ -1,11 +1,14 @@
+import { lazy, Suspense } from 'react';
 import Header from './Header';
 import PasswordDisplay from './PasswordDisplay';
 import PasswordLengthControl from './PasswordLengthControl';
 import CharacterOptions from './CharacterOptions';
 import GenerateButton from './GenerateButton';
-import SecurityTips from './SecurityTips';
 import { usePasswordGenerator } from '../hooks/usePasswordGenerator';
 import { DEFAULT_PASSWORD_OPTIONS } from '../constants';
+
+// Lazy load SecurityTips for better performance
+const SecurityTips = lazy(() => import('./SecurityTips'));
 
 /**
  * Main password generator component that orchestrates all sub-components
@@ -33,7 +36,9 @@ function PasswordGenerator() {
                     <GenerateButton onGenerate={handleGeneratePassword} />
                 </div>
 
-                <SecurityTips />
+                <Suspense fallback={<div className="mt-8 h-32 bg-white rounded-xl shadow-lg animate-pulse" />}>
+                    <SecurityTips />
+                </Suspense>
             </div>
         </div>
     );

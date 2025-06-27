@@ -26,6 +26,7 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
                         value={password}
                         readOnly
                         placeholder="Generated password will appear here..."
+                        aria-label="Generated password"
                         className="w-full px-6 py-4 text-lg font-mono bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition-colors"
                     />
                     {password && (
@@ -36,6 +37,7 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
                 </div>
                 <button
                     onClick={onCopy}
+                    aria-label="Copy password to clipboard"
                     className="px-6 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors focus:outline-none focus:ring-4 focus:ring-blue-200"
                 >
                     Copy
@@ -44,7 +46,12 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
 
             {password && (
                 <div className="mt-4">
-                    <button onClick={toggleExplanation} className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800 transition-colors">
+                    <button
+                        onClick={toggleExplanation}
+                        aria-expanded={showExplanation}
+                        aria-label={`${showExplanation ? 'Hide' : 'Show'} password strength explanation`}
+                        className="flex items-center gap-2 text-sm text-gray-700 hover:text-gray-900 transition-colors"
+                    >
                         <span>Why is this rated as "{passwordStrength.text}"?</span>
                         <svg
                             className={`w-4 h-4 transition-transform ${showExplanation ? 'rotate-180' : ''}`}
@@ -58,7 +65,7 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
 
                     {showExplanation && (
                         <div className="mt-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <h4 className="font-semibold text-gray-800 mb-3">Password Strength Breakdown</h4>
+                            <h2 className="font-semibold text-gray-800 mb-3">Password Strength Breakdown</h2>
 
                             <div className="space-y-3 text-sm">
                                 <div className="flex justify-between items-center">
@@ -88,7 +95,7 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
 
                             {passwordStrength.details.detectedPatterns.length > 0 && (
                                 <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                                    <h5 className="font-semibold text-yellow-800 mb-2">⚠️ Detected Weak Patterns:</h5>
+                                    <h3 className="font-semibold text-yellow-800 mb-2">⚠️ Detected Weak Patterns:</h3>
                                     <ul className="text-sm text-yellow-700 space-y-1">
                                         {passwordStrength.details.detectedPatterns.map((pattern, index) => (
                                             <li key={index}>• {pattern}</li>
@@ -98,7 +105,7 @@ function PasswordDisplay({ password, passwordStrength, onCopy }: PasswordDisplay
                             )}
 
                             <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                                <h5 className="font-semibold text-blue-800 mb-2">📊 Scoring Guide:</h5>
+                                <h3 className="font-semibold text-blue-800 mb-2">📊 Scoring Guide:</h3>
                                 <div className="text-sm text-blue-700 space-y-1">
                                     <div>
                                         <strong>Length:</strong> 8+ chars (+2), 12+ chars (+2), 15+ chars (+2), 20+ chars (+1)

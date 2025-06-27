@@ -4,11 +4,11 @@
 function SecurityTips() {
     return (
         <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">🔒 NIST 2024 Password Security Guidelines</h3>
+            <h2 className="text-lg font-semibold text-gray-800 mb-4">🔒 NIST 2024 Password Security Guidelines</h2>
             <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                    <h4 className="font-semibold text-gray-700 mb-2">✅ Best Practices</h4>
-                    <ul className="space-y-2 text-gray-600 text-sm">
+                    <h3 className="font-semibold text-gray-700 mb-2">✅ Best Practices</h3>
+                    <ul className="space-y-2 text-gray-700 text-sm">
                         <li>
                             • <strong>Length matters most:</strong> Aim for 15+ characters
                         </li>
@@ -27,8 +27,8 @@ function SecurityTips() {
                     </ul>
                 </div>
                 <div>
-                    <h4 className="font-semibold text-gray-700 mb-2">❌ Avoid These</h4>
-                    <ul className="space-y-2 text-gray-600 text-sm">
+                    <h3 className="font-semibold text-gray-700 mb-2">❌ Avoid These</h3>
+                    <ul className="space-y-2 text-gray-700 text-sm">
                         <li>
                             • <strong>Personal information:</strong> Names, birthdays, addresses
                         </li>

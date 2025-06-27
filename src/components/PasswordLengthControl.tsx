@@ -32,6 +32,7 @@ function PasswordLengthControl({ length, onLengthChange }: PasswordLengthControl
                     <button
                         onClick={decrementLength}
                         disabled={length <= PASSWORD_LENGTH_LIMITS.MIN}
+                        aria-label="Decrease password length"
                         className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         −
@@ -39,6 +40,7 @@ function PasswordLengthControl({ length, onLengthChange }: PasswordLengthControl
                     <button
                         onClick={incrementLength}
                         disabled={length >= PASSWORD_LENGTH_LIMITS.MAX}
+                        aria-label="Increase password length"
                         className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         +
@@ -51,6 +53,7 @@ function PasswordLengthControl({ length, onLengthChange }: PasswordLengthControl
                 max={PASSWORD_LENGTH_LIMITS.MAX}
                 value={length}
                 onChange={handleSliderChange}
+                aria-label={`Password length: ${length} characters`}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             />
         </div>
