@@ -15,7 +15,7 @@ function PasswordGenerator() {
         usePasswordGenerator(DEFAULT_PASSWORD_OPTIONS);
 
     const handleGeneratePassword = () => {
-        generatePassword(true);
+        generatePassword();
     };
 
     return (
