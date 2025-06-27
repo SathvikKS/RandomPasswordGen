@@ -4,6 +4,15 @@
 
 @tailwind utilities;
 
+/* Prevent scroll restoration and ensure consistent scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
 /* Custom slider styles */
 .slider {
   -webkit-appearance: none;
