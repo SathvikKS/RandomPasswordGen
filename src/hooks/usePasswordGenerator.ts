@@ -4,11 +4,22 @@ import type { PasswordOptions } from '../types';
 import { generateSecurePassword, validatePasswordOptions } from '../utils/passwordGenerator';
 import { assessPasswordStrength } from '../utils/passwordStrength';
 import { copyToClipboard } from '../utils/clipboard';
+import { savePasswordPreferences, loadPasswordPreferences } from '../utils/localStorage';
 import { TOAST_CONFIG } from '../constants';
 
 export function usePasswordGenerator(initialOptions: PasswordOptions) {
     const [password, setPassword] = useState<string>('');
-    const [options, setOptions] = useState<PasswordOptions>(initialOptions);
+    const [options, setOptions] = useState<PasswordOptions>(() => {
+        // Load preferences from localStorage on initialization
+        // Fall back to initialOptions if localStorage is not available
+        try {
+            const savedPreferences = loadPasswordPreferences();
+            return savedPreferences;
+        } catch (error) {
+            console.warn('localStorage not available, using initial options:', error);
+            return initialOptions;
+        }
+    });
 
     /**
      * Generates a new password based on current options
@@ -74,6 +85,11 @@ export function usePasswordGenerator(initialOptions: PasswordOptions) {
      * Gets current password strength
      */
     const passwordStrength = assessPasswordStrength(password, options);
+
+    // Save preferences to localStorage whenever options change
+    useEffect(() => {
+        savePasswordPreferences(options);
+    }, [options]);
 
     // Generate initial password on mount
     useEffect(() => {
